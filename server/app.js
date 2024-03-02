@@ -22,7 +22,7 @@ const bodyParser = require('body-parser');
 //   .catch((error) => {
 //     console.log('DB connection error:', error);
 //   });
-mongoose.connect(process.env.DBURL)
+mongoose.connect('mongodb+srv://SAM_RAHUL:IoHX7fIA1Snl2GBq@cluster0.hqoru8l.mongodb.net/')
 .then(()=>{
   console.log("DB is connected");
 })
@@ -43,8 +43,8 @@ app.use('/api',router)
 
 // port server 
 
-app.listen(process.env.PORT,()=>{
-    console.log(`Server listening on port:${process.env.PORT}`);
+app.listen(7000,()=>{
+    console.log(`Server listening on port:7000`);
 })
 
 

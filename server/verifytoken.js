@@ -9,7 +9,7 @@ const verifyToken = (req,res,next) =>{
     {
         return res.status(401).json({ message: 'Authentication required' });
     }
-    jwt.verify(token,process.env.secretkey,(err,decoded) =>{
+    jwt.verify(token,process.env.secretKey,(err,decoded) =>{
         if(err)
         {
             return res.status(403).json({ message: 'Failed to authenticate token' });

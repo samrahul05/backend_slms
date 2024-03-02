@@ -11,6 +11,7 @@ const Signup = async (req,res) => {
         ...req.body,
         password:bcrypt.hashSync(req.body.password,10), 
     })
+    console.log(data)
     const {emailOrPhone} =req.body
     const existingUser =await User.findOne({emailOrPhone})
     if(existingUser)
@@ -51,7 +52,7 @@ const Login = async (req, res) => {
   
       const token = jwt.sign(
         { id: user._id, emailOrPhone: user.emailOrPhone },
-        process.env.secretkey,
+        process.env.secretKey,
         {
           expiresIn: '1h'
         }
@@ -67,10 +68,16 @@ const Login = async (req, res) => {
   };
   
 
+  const Getusers = async(req,res)=>{
+    const response = await User.find({})
+    console.log(response)
+    res.json(response)
+  }
 
 
 
-module.exports={Signup,Login}
+
+module.exports={Signup,Login,Getusers}
 
 
 
